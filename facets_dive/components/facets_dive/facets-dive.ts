@@ -391,7 +391,7 @@ Polymer({
       value: false,
     },
     widthInfoCard: {
-      type: String,
+      type: Number,
       value: 300  ,
       notify: true,
     },
