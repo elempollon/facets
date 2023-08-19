@@ -390,6 +390,11 @@ Polymer({
       type: Boolean,
       value: false,
     },
+    widthInfoCard: {
+      type: String,
+      value: '300px',
+      notify: true,
+    },
     stableColors: {
       type: Boolean,
       value: false,
@@ -408,6 +413,8 @@ Polymer({
 
     if (this.hideInfoCard) {
       $.vis.style.right = '0';
+    } else {
+      $.vis.style.right = this.widthInfoCard;
     }
     this._updateHeight();
   },
