@@ -93,7 +93,7 @@ const FONT_FAMILY = `'Roboto Mono', 'Consolas', 'Menlo', monospace`;
  * Amount of padding as a proportion of sprite size to preserve within sprite
  * when rendering text.
  */
-const TEXT_PADDING = 0.25;
+const TEXT_PADDING = 0.125;
 
 /**
  * A SpriteAtlas is a dynamic texture atlas which holds image data for the
