@@ -414,7 +414,7 @@ Polymer({
     if (this.hideInfoCard) {
       $.vis.style.right = '0';
     } else {
-      //$.vis.style.right = this.widthInfoCard;
+      $.vis.style.right = this.widthInfoCard;
     }
     this._updateHeight();
   },
