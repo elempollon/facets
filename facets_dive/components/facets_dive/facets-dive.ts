@@ -392,7 +392,7 @@ Polymer({
     },
     widthInfoCard: {
       type: String,
-      value: '300px',
+      value: 300  ,
       notify: true,
     },
     stableColors: {
