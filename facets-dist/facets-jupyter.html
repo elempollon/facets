@@ -21082,10 +21082,7 @@ function qn(b){return 65>b.length?b:b.substr(0,30)+"..."+b.substr(-30)};
         }
       }
     </style>
-    <div>
-      <p style="border-width:3px; border-style:solid; border-color:#FF0000; padding: 1em;"  id="holder">
-      </p>
-      
+    <div style="border-width:3px; border-style:solid; border-color:#FF0000; padding: 1em;"  id="holder">
     </div>
   </template>
 </dom-module>
@@ -21627,15 +21624,14 @@ const Ep=(b,d)=>{const f=document.createElement("dl");for(const m in b)if(b.hasO
         margin: 0 0 16px 0;
       }
     </style>
-    <div>      <p style="border-width:3px; border-style:solid; border-color:#FF0000; padding: 1em;"  id="holder">
-      </p>
+    <div style="border-width:3px; border-style:solid; border-color:#FF0000; padding: 1em;"  id="holder">
 </div>
     
   </template>
 </dom-module>
 
 <script>//~~WEBPATH~~/facets-dive/components/facets-dive-info-card/facets-dive-info-card.js
-Polymer({is:"facets-dive-info-card",properties:{infoRenderer:{type:Object},selectedData:{type:Array,value:[],observer:"_updateSelected"}},ready(){this.scopeSubtree(this.$.holder,!0)},_updateSelected(b){this.$.holder.innerHTML="";if(b){var d=this.infoRenderer||Ep;for(let f=0;f<b.length;f++){const h=b[f],md=document.createElement("div");m=document.createElement("p"); md.appendChild(m); md.style.width="100%";this.$.holder.appendChild(md);m.style.border-width="3px"; m.style.border-style="solid"; m.style.border-color="#FF0000"; m.style.padding= "1em;"; d(h,m)}}}});
+Polymer({is:"facets-dive-info-card",properties:{infoRenderer:{type:Object},selectedData:{type:Array,value:[],observer:"_updateSelected"}},ready(){this.scopeSubtree(this.$.holder,!0)},_updateSelected(b){this.$.holder.innerHTML="";if(b){var d=this.infoRenderer||Ep;for(let f=0;f<b.length;f++){const h=b[f],m=document.createElement("div");m.style.width="100%";this.$.holder.appendChild(m);d(h,m)}}}});
 </script>
 
 
