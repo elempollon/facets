@@ -21605,6 +21605,8 @@ const Ep=(b,d)=>{const f=document.createElement("dl");for(const m in b)if(b.hasO
 
 <dom-module id="facets-dive-info-card">
   <template>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
+
     <style>
       :host {
         @apply --paper-font-common-base;
@@ -21624,7 +21626,21 @@ const Ep=(b,d)=>{const f=document.createElement("dl");for(const m in b)if(b.hasO
         margin: 0 0 16px 0;
       }
     </style>
-    <div style="border-width:3px; border-style:solid; border-color:#FF0000; padding: 1em;"  id="holder">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- <div style="border-width:3px; border-style:solid; border-color:#FF0000; padding: 1em;"  id="holder"> -->
+
+    <button type="button" class="btn btn-primary btn-lg show-modal" data-toggle="modal" data-target="#myModal">
+      Login Form
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="holder">
+      <h3 class="title">Login Form TITLE HERE</h3>
+      <p class="description">Login here Using Email & Password</p>
+    </div>
+
 </div>
     
   </template>
