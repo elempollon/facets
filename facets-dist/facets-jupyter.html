@@ -21606,12 +21606,25 @@ const Ep=(b,d)=>{const f=document.createElement("dl");for(const m in b)if(b.hasO
 <dom-module id="facets-dive-info-card">
   <template>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
   <style>
+      :host {
+        @apply --paper-font-common-base;
+        box-sizing: border-box;
+        max-height: 100%;
+        max-width: 100%;
+        overflow: auto;
+        padding: 8px;
+      }
+      dt {
+        color: #9e7c65;
+        font-size: 14px;
+      }
+      dd {
+        @apply --paper-font-common-code;
+        color: #513726;
+        margin: 0 0 16px 0;
+      }
         .modal-box{ font-family: 'Poppins', sans-serif; }
  .show-modal{
      color: #fff;
@@ -21764,7 +21777,7 @@ const Ep=(b,d)=>{const f=document.createElement("dl");for(const m in b)if(b.hasO
  }
  
    </style>
-   <div class="container">
+   <div class="container" id="holder">
      <div class="row">
          <div class="col-md-12">
              <div class="modal-box">
