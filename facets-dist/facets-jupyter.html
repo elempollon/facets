@@ -21176,14 +21176,16 @@ clicked(){
   if(d.ctrlKey)
     for(d=0;d<this.elem.selectedIndices.length;d++)
       f[this.elem.selectedIndices[d]]=!0;
-for(d=0;d<b.length;d++)
-  f[b[d]]=!0;
-this.elem.set("selectedIndices", Array.from(Object.keys(f).map(h=>+h)));
-b=[];
-for(f=0; f<this.elem.selectedIndices.length;f++)
-  b.push(this.elem.data[this.elem.selectedIndices[f]]);
-  this.elem.set("selectedData",b)
-}
+  for(d=0;d<b.length;d++)
+    if (this.elem.filteredDataIndices === undefined ||
+        Array.from(Object.keys(this.elem.filteredDataIndices).map(h=>+this.elem.filteredDataIndices[h])).includes(b[d]))
+      f[b[d]]=!0;
+  this.elem.set("selectedIndices", Array.from(Object.keys(f).map(h=>+h)));
+  b=[];
+  for(f=0; f<this.elem.selectedIndices.length;f++)
+    b.push(this.elem.data[this.elem.selectedIndices[f]]);
+    this.elem.set("selectedData",b)
+  }
 fitToViewport(){const b=this.elem.getBoundingClientRect();if(b.width&&b.height){this.layout.viewport.width=b.width;this.layout.viewport.height=b.height;this.layout.padding.bottom=this.elem.scenePadding;this.layout.padding.left=this.elem.scenePadding;this.layout.padding.right=
 this.elem.scenePadding;this.layout.padding.top=this.elem.scenePadding;this.layout.grid={bottom:0,left:0,right:this.grid.width,top:this.grid.height};if(this.labels.length){var d=0,f=0,h=0,m=0;this.labelsLayer.selectAll(".label").each(function(p){var n=d3.select(this).select(".current").node().getBoundingClientRect();const q=p.elementMargin||{bottom:0,left:0,right:0,top:0},t=n.height+q.top+q.bottom;n=n.width+q.left+q.right;switch(p.side){case Zl.Bottom:d=Math.max(d,t);break;case Zl.Top:m=Math.max(m,
 t);break;case Zl.Left:f=Math.max(f,n);break;case Zl.Right:h=Math.max(h,n);break;default:throw Error("Unrecognized Side.");}});this.layout.padding.bottom+=d;this.layout.padding.left+=f;this.layout.padding.right+=h;this.layout.padding.top+=m}Am(this.layout,b.width);Bm(this.layout,b.height);this.scale=ym(this.layout);var {position:w,frustum:l}=zm(this.layout);this.camera.left=l.left;this.camera.right=l.right;this.camera.top=l.top;this.camera.bottom=l.bottom;this.camera.position.set(w.x,w.y,100);this.camera.updateProjectionMatrix();
