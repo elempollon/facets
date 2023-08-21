@@ -21599,7 +21599,7 @@ this.getAttribute("heading"),f=this.getAttribute("aria-label");"string"===typeof
 
 
 <script>//~~WEBPATH~~/facets-dive/lib/info-renderers.js
-const Ep=(b,d)=>{const f=document.createElement("dl");for(const m in b)if(b.hasOwnProperty(m)){var h=document.createElement("dt");h.textContent=m;f.appendChild(h);h=document.createElement("dd");h.textContent=b[m];f.appendChild(h)}d.appendChild(f)};
+const Ep=(b,d)=>{const f=document.createElement("dl");for(const m in b)if(b.hasOwnProperty(m)){var h=document.createElement("dt");h.textContent=m;f.appendChild(h);h=document.createElement("dd");h.innerHTML=b[m];f.appendChild(h)}d.appendChild(f)};
 </script>
 
 
