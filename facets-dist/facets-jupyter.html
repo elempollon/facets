@@ -21160,8 +21160,24 @@ class Dp{constructor(b){this.elem=b;this.endTimestamp=0;this.renderQueued=!1;thi
 "labels");this.scene=new THREE.Scene;this.camera=new THREE.OrthographicCamera(0,100,0,100,.1,1E3);try{this.renderer=new THREE.WebGLRenderer({alpha:!0}),this.renderer.setPixelRatio(),d3.select(this.renderer.domElement).style("left",0).style("pointer-events","none").style("position","absolute").style("top",0),this.holder2.appendChild(this.renderer.domElement)}catch(b){}this.zoom=d3.zoom().scaleExtent([1,500]).on("zoom",this.zoomed.bind(this));d3.select(this.elem).call(this.zoom);this.labelsAndAxesSVG=
 d3.select(this.holder2).append("svg").style("left",0).style("position","absolute").style("top",0);this.labelsAndAxesSVGRoot=this.labelsAndAxesSVG.append("g").attr("class","root");this.labelsLayer=this.labelsAndAxesSVGRoot.append("g").attr("class","labels");this.axesLayer=this.labelsAndAxesSVGRoot.append("g").attr("class","axes");this.comparedLayer=this.labelsAndAxesSVGRoot.append("g").attr("class","comparedboxes");this.selectedLayer=this.labelsAndAxesSVGRoot.append("g").attr("class","selectedboxes");
 this.labelsAndAxesSVG.on("click",this.clicked.bind(this));this.renderer||(this.labelsAndAxesSVG.style("display","none"),this.cellBackgroundSVG.style("display","none"),d3.select(this.holder2).append("p").attr("class","error").style("color","darkred").html('\n            \x3cstrong\x3eERROR\x3c/strong\x3e: Facets Dive requires WebGL, and it is not\n            enabled in your browser. See\n            \x3ca rel\x3d"noreferrer" href\x3d"http://webglreport.com/"\x3e\n            WebGL Report\x3c/a\x3e for details.\n          '))}zoomed(){const {x:b,
-y:d,k:f}=d3.event.transform,h=this.scale/f;this.camera.top*=h;this.camera.left*=h;this.camera.right*=h;this.camera.bottom*=h;this.camera.position.set(-b/f,d/f,this.camera.position.z);this.camera.updateProjectionMatrix();this.scale=f;An(this);Bn(this);Cn(this)}clicked(){var b=this.elem.getBoundingClientRect(),d=d3.event;b=gn(this.spriteMesh,this.camera.position.x+(d.clientX-b.left)/this.scale,this.camera.position.y-(d.clientY-b.top)/this.scale);var f={};if(d.ctrlKey)for(d=0;d<this.elem.selectedIndices.length;d++)f[this.elem.selectedIndices[d]]=
-!0;for(d=0;d<b.length;d++)f[b[d]]=!0;this.elem.set("selectedIndices",Array.from(Object.keys(f).map(h=>+h)));b=[];for(f=0;f<this.elem.selectedIndices.length;f++)b.push(this.elem.data[this.elem.selectedIndices[f]]);this.elem.set("selectedData",b)}fitToViewport(){const b=this.elem.getBoundingClientRect();if(b.width&&b.height){this.layout.viewport.width=b.width;this.layout.viewport.height=b.height;this.layout.padding.bottom=this.elem.scenePadding;this.layout.padding.left=this.elem.scenePadding;this.layout.padding.right=
+y:d,k:f}=d3.event.transform,h=this.scale/f;this.camera.top*=h;this.camera.left*=h;this.camera.right*=h;this.camera.bottom*=h;this.camera.position.set(-b/f,d/f,this.camera.position.z);this.camera.updateProjectionMatrix();this.scale=f;An(this);Bn(this);Cn(this)}
+clicked()
+{
+  var b=this.elem.getBoundingClientRect(),d=d3.event;
+  Array.from(Object.keys(f).map(h=>+h))=gn(this.spriteMesh,this.camera.position.x+(d.clientX-b.left)/this.scale,this.camera.position.y-(d.clientY-b.top)/this.scale);
+  var f={};
+  //if(d.ctrlKey)
+    for(d=0;d<this.elem.selectedIndices.length;d++)
+      f[this.elem.selectedIndices[d]]= !0;
+  for(d=0;d<b.length;d++)
+    f[b[d]]=!0;
+  this.elem.set("selectedIndices", Array.from(Object.keys(f).map(h=>+h)));
+  b=[];
+  for(f=0; f<this.elem.selectedIndices.length;f++)
+    b.push(this.elem.data[this.elem.selectedIndices[f]]);
+    this.elem.set("selectedData",b)
+  }
+  fitToViewport(){const b=this.elem.getBoundingClientRect();if(b.width&&b.height){this.layout.viewport.width=b.width;this.layout.viewport.height=b.height;this.layout.padding.bottom=this.elem.scenePadding;this.layout.padding.left=this.elem.scenePadding;this.layout.padding.right=
 this.elem.scenePadding;this.layout.padding.top=this.elem.scenePadding;this.layout.grid={bottom:0,left:0,right:this.grid.width,top:this.grid.height};if(this.labels.length){var d=0,f=0,h=0,m=0;this.labelsLayer.selectAll(".label").each(function(p){var n=d3.select(this).select(".current").node().getBoundingClientRect();const q=p.elementMargin||{bottom:0,left:0,right:0,top:0},t=n.height+q.top+q.bottom;n=n.width+q.left+q.right;switch(p.side){case Zl.Bottom:d=Math.max(d,t);break;case Zl.Top:m=Math.max(m,
 t);break;case Zl.Left:f=Math.max(f,n);break;case Zl.Right:h=Math.max(h,n);break;default:throw Error("Unrecognized Side.");}});this.layout.padding.bottom+=d;this.layout.padding.left+=f;this.layout.padding.right+=h;this.layout.padding.top+=m}Am(this.layout,b.width);Bm(this.layout,b.height);this.scale=ym(this.layout);var {position:w,frustum:l}=zm(this.layout);this.camera.left=l.left;this.camera.right=l.right;this.camera.top=l.top;this.camera.bottom=l.bottom;this.camera.position.set(w.x,w.y,100);this.camera.updateProjectionMatrix();
 d3.select(this.elem).call(this.zoom.transform,d3.zoomIdentity.scale(this.scale).translate(-this.camera.position.x,this.camera.position.y));An(this);Bn(this);Cn(this)}else setTimeout(()=>this.fitToViewport(),100)}zoomIn(){this.zoom.scaleBy(d3.select(this.elem),1.1)}zoomOut(){this.zoom.scaleBy(d3.select(this.elem),1/1.1)}isVisible(b,d){var f=this.scale;var h=this.camera.position,m=this.camera;if(void 0!==b.minScale)f=b.scaleDown||f>=b.minScale;else if(b.boundingBox){var w=b.boundingBox;w.left>h.x+m.right||
@@ -21605,7 +21621,7 @@ const Ep=(b,d)=>{const f=document.createElement("dl");for(const m in b)if(b.hasO
 
 <dom-module id="facets-dive-info-card">
   <template>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <style>
         :host {
