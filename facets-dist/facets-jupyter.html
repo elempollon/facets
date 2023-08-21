@@ -21018,7 +21018,15 @@ function $m(b,d,f){d*=4;f-=b.constructionTimestamp;b.baseTimestampData[d+0]=f;b.
 function bn(b,d,f){d*=4;b.baseTextureIndexData[d+0]=f;b.baseTextureIndexData[d+1]=f;b.baseTextureIndexData[d+2]=f;b.baseTextureIndexData[d+3]=f;b.baseTextureIndexAttribute.needsUpdate=!0}function cn(b,d,f){d*=4;f-=b.constructionTimestamp;b.textureTimestampData[d+0]=f;b.textureTimestampData[d+1]=f;b.textureTimestampData[d+2]=f;b.textureTimestampData[d+3]=f;b.textureTimestampAttribute.needsUpdate=!0}
 function dn(b,d,f){d*=4;f-=b.constructionTimestamp;b.baseTextureTimestampData[d+0]=f;b.baseTextureTimestampData[d+1]=f;b.baseTextureTimestampData[d+2]=f;b.baseTextureTimestampData[d+3]=f;b.baseTextureTimestampAttribute.needsUpdate=!0}
 function en(b){const d=b.defaultTextureCanvas=document.createElement("canvas"),f=d.width=b.imageWidth,h=d.height=b.imageHeight,m=d.getContext("2d"),w=new Image;w.onload=()=>{m.drawImage(w,0,0,f,h);b.defaultTexture.needsUpdate=!0};w.src=URL.createObjectURL(new Blob(['\n\x3csvg version\x3d"1.1"\n     baseProfile\x3d"full"\n     width\x3d"128" height\x3d"128"\n     xmlns\x3d"http://www.w3.org/2000/svg"\n     xmlns:xlink\x3d"http://www.w3.org/1999/xlink"\x3e\n  \x3cdefs\x3e\n    \x3clinearGradient id\x3d"linearGradient3774"\x3e\n      \x3cstop\n         style\x3d"stop-color:#808080;stop-opacity:1;"\n         offset\x3d"0" /\x3e\n      \x3cstop\n         style\x3d"stop-color:#555555;stop-opacity:1;"\n         offset\x3d"1" /\x3e\n    \x3c/linearGradient\x3e\n    \x3cradialGradient\n       xlink:href\x3d"#linearGradient3774"\n       id\x3d"radialGradient3780"\n       cx\x3d"80"\n       cy\x3d"40"\n       fx\x3d"80"\n       fy\x3d"40"\n       r\x3d"80"\n       gradientUnits\x3d"userSpaceOnUse"\n       spreadMethod\x3d"pad" /\x3e\n  \x3c/defs\x3e\n  \x3ccircle cx\x3d"50%" cy\x3d"50%" r\x3d"50%" fill\x3d"url(#radialGradient3780)" /\x3e\n\x3c/svg\x3e\n'],{type:"image/svg+xml;charset\x3dutf-8"}));
-return d}function fn(b){return new Rm(b,b.nextIndex++)}function gn(b,d,f){const h=[];for(let m=0;m<b.capacity;m++){const w=12*m;d>=b.positionData[w+0]&&d<=b.positionData[w+6]&&f>=b.positionData[w+1]&&f<=b.positionData[w+7]&&h.push(m)}return h}
+return d}function fn(b){return new Rm(b,b.nextIndex++)}
+function gn(b,d,f){
+  const h=[];
+  for(let m=0;m<b.capacity;m++){
+    const w=12*m;
+    d >= b.positionData[w+0] && d<=b.positionData[w+6] && f>=b.positionData[w+1] && f<=b.positionData[w+7] && h.push(m)
+  }
+  return h
+}
 class hn extends THREE.Mesh{constructor(b,d=32,f=32){super();this.capacity=b;this.imageWidth=d;this.imageHeight=f;this.nextIndex=0;this.spriteWidth=this.imageWidth/this.imageHeight;this.spriteHeight=1;this.geometry=new THREE.BufferGeometry;this.positionData=new Float32Array(12*b);this.positionAttribute=new THREE.BufferAttribute(this.positionData,3);this.positionAttribute.setDynamic(!0);this.geometry.addAttribute("position",this.positionAttribute);this.basePositionData=new Float32Array(12*b);this.basePositionAttribute=
 new THREE.BufferAttribute(this.basePositionData,3);this.basePositionAttribute.setDynamic(!0);this.geometry.addAttribute("basePosition",this.basePositionAttribute);this.colorData=new Uint8Array(16*b);this.colorAttribute=new THREE.BufferAttribute(this.colorData,4);this.colorAttribute.normalized=!0;this.colorAttribute.setDynamic(!0);this.geometry.addAttribute("color",this.colorAttribute);this.baseColorData=new Uint8Array(16*b);this.baseColorAttribute=new THREE.BufferAttribute(this.baseColorData,4);this.baseColorAttribute.normalized=
 !0;this.baseColorAttribute.setDynamic(!0);this.geometry.addAttribute("baseColor",this.baseColorAttribute);this.opacityData=new Float32Array(4*b);this.opacityAttribute=new THREE.BufferAttribute(this.opacityData,1);this.opacityAttribute.setDynamic(!0);this.geometry.addAttribute("opacity",this.opacityAttribute);this.baseOpacityData=new Float32Array(4*b);this.baseOpacityAttribute=new THREE.BufferAttribute(this.baseOpacityData,1);this.baseOpacityAttribute.setDynamic(!0);this.geometry.addAttribute("baseOpacity",
@@ -21163,12 +21171,11 @@ this.labelsAndAxesSVG.on("click",this.clicked.bind(this));this.renderer||(this.l
 y:d,k:f}=d3.event.transform,h=this.scale/f;this.camera.top*=h;this.camera.left*=h;this.camera.right*=h;this.camera.bottom*=h;this.camera.position.set(-b/f,d/f,this.camera.position.z);this.camera.updateProjectionMatrix();this.scale=f;An(this);Bn(this);Cn(this)}
 clicked()
 {
-  var b=this.elem.getBoundingClientRect(),d=d3.event;
-  Array.from(Object.keys(f).map(h=>+h))=gn(this.spriteMesh,this.camera.position.x+(d.clientX-b.left)/this.scale,this.camera.position.y-(d.clientY-b.top)/this.scale);
+  var b=this.elem.getBoundingClientRect(),d=d3.event;Array.from(Object.keys(f).map(h=>+h))=gn(this.spriteMesh, this.camera.position.x + (d.clientX-b.left) / this.scale, this.camera.position.y - (d.clientY-b.top)/this.scale);
   var f={};
-  //if(d.ctrlKey)
+  if(d.ctrlKey)
     for(d=0;d<this.elem.selectedIndices.length;d++)
-      f[this.elem.selectedIndices[d]]= !0;
+      f[this.elem.selectedIndices[d]] = !0;
   for(d=0;d<b.length;d++)
     f[b[d]]=!0;
   this.elem.set("selectedIndices", Array.from(Object.keys(f).map(h=>+h)));
